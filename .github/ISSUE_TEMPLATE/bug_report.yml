@@ -1,0 +1,108 @@
+name: バグ報告
+description: バグを報告するためのテンプレート
+title: "[BUG] "
+labels: ["bug", "需要調査"]
+assignees:
+  - tenpei-peso
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグ報告をありがとうございます！問題を迅速に解決するために、以下の情報を提供してください。
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: バグの説明
+      description: 発生しているバグについて明確で簡潔な説明をしてください。
+      placeholder: バグの詳細な説明...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce-steps
+    attributes:
+      label: 再現手順
+      description: バグを再現するための手順を記述してください。
+      placeholder: |
+        1. '...' に移動
+        2. '...' をクリック
+        3. '...' まで下にスクロール
+        4. エラーを確認
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期待される動作
+      description: 期待していた動作について明確で簡潔な説明をしてください。
+      placeholder: 期待していた動作の説明...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: 実際の動作
+      description: 実際に起こった動作について説明してください。
+      placeholder: 実際に起こった動作の説明...
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: スクリーンショット
+      description: 可能であれば、問題を説明するのに役立つスクリーンショットを追加してください。
+      placeholder: スクリーンショットをここにドラッグ&ドロップ...
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: プラットフォーム
+      description: どのプラットフォームでバグが発生しましたか？
+      options:
+        - Android
+        - iOS
+        - Web
+        - Windows
+        - macOS
+        - Linux
+    validations:
+      required: true
+
+  - type: input
+    id: flutter-version
+    attributes:
+      label: Flutter バージョン
+      description: 使用している Flutter のバージョンを入力してください
+      placeholder: "例: 3.24.3"
+    validations:
+      required: true
+
+  - type: input
+    id: dart-version
+    attributes:
+      label: Dart バージョン
+      description: 使用している Dart のバージョンを入力してください
+      placeholder: "例: 3.1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: device-info
+    attributes:
+      label: デバイス情報
+      description: デバイスの詳細情報を提供してください
+      placeholder: |
+        - デバイス: [例: iPhone 12]
+        - OS: [例: iOS 15.0]
+        - ブラウザ: [例: Safari]（Webの場合）
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: 追加情報
+      description: この問題について他に関連する情報があれば、こちらに追加してください。
+      placeholder: その他の関連情報...

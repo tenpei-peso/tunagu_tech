@@ -1,0 +1,32 @@
+# このファイルは、プルリクエストで自動的にレビュアーを指定するために使用されます
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# グローバル所有者
+* @tenpei-peso
+
+# ドキュメント
+*.md @tenpei-peso
+/docs/ @tenpei-peso
+
+# 設定ファイル
+*.yml @tenpei-peso
+*.yaml @tenpei-peso
+*.json @tenpei-peso
+pubspec.yaml @tenpei-peso
+analysis_options.yaml @tenpei-peso
+
+# GitHub 設定
+/.github/ @tenpei-peso
+
+# Flutter 固有のファイル
+/lib/ @tenpei-peso
+/test/ @tenpei-peso
+/android/ @tenpei-peso
+/ios/ @tenpei-peso
+/web/ @tenpei-peso
+
+# 重要なファイル
+LICENSE @tenpei-peso
+README.md @tenpei-peso
+CONTRIBUTING.md @tenpei-peso
+CODE_OF_CONDUCT.md @tenpei-peso

@@ -1,0 +1,59 @@
+name: 質問
+description: プロジェクトに関する質問をするためのテンプレート
+title: "[QUESTION] "
+labels: ["question"]
+assignees:
+  - tenpei-peso
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ご質問をありがとうございます！以下の情報を提供してください。
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: 質問の種類
+      description: どのような種類の質問ですか？
+      options:
+        - 使用方法について
+        - 技術的な質問
+        - 設計・アーキテクチャについて
+        - 貢献方法について
+        - その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: 質問内容
+      description: 質問を明確に記述してください。
+      placeholder: 詳細な質問内容...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 背景・文脈
+      description: 質問の背景や関連する情報を提供してください。
+      placeholder: なぜこの質問をするのか、どのような状況なのかなど...
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: 試したこと
+      description: この質問をする前に試したことがあれば教えてください。
+      placeholder: |
+        - ドキュメントを確認した
+        - 既存のIssueを検索した
+        - インターネットで検索した
+        - 具体的に試したコード・手順
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: 追加情報
+      description: その他、関連する情報があれば提供してください。
+      placeholder: その他の関連情報...

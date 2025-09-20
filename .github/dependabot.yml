@@ -1,0 +1,48 @@
+version: 2
+updates:
+  # Flutter/Dart の依存関係を監視
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 5
+    target-branch: "develop"
+    reviewers:
+      - "tenpei-peso"
+    assignees:
+      - "tenpei-peso"
+    labels:
+      - "dependencies"
+      - "自動更新"
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    ignore:
+      # メジャーバージョンアップは手動で行う
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions の依存関係を監視
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    open-pull-requests-limit: 3
+    target-branch: "develop"
+    reviewers:
+      - "tenpei-peso"
+    assignees:
+      - "tenpei-peso"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "自動更新"
+    commit-message:
+      prefix: "chore(ci)"
+      include: "scope"
