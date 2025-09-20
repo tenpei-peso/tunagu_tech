@@ -38,11 +38,10 @@ clean_pod:
 
 .PHONY: format
 format:
-	dart fix --apply
 	flutter pub run import_sorter:main
 	dart format lib/* test/*
 	flutter analyze
 
 .PHONY: build
-format:
+build:
 	flutter pub run build_runner build --delete-conflicting-outputs
