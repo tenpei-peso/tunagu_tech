@@ -1,8 +1,11 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-void main() {
+// Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-  runApp(const MyApp());
+void main() {
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
