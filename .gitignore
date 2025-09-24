@@ -87,11 +87,6 @@ coverage/
 **/ios/firebase_app_id_file.json
 **/lib/firebase_options.dart
 
-# Generated files
-**/*.g.dart
-**/*.freezed.dart
-**/generated_plugin_registrant.dart
-
 # Test related
 test/coverage/
 coverage/
@@ -107,17 +102,3 @@ coverage/
 **/android/captures/
 **/android/key.properties
 **/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
-
-# macOS related
-**/macos/Flutter/GeneratedPluginRegistrant.swift
-**/macos/Flutter/ephemeral/
-
-# Linux related
-**/linux/flutter/generated_plugin_registrant.cc
-**/linux/flutter/generated_plugin_registrant.h
-**/linux/flutter/generated_plugins.cmake
-
-# Windows related
-**/windows/flutter/generated_plugin_registrant.cc
-**/windows/flutter/generated_plugin_registrant.h
-**/windows/flutter/generated_plugins.cmake

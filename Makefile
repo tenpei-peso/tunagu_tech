@@ -22,17 +22,20 @@ watch:
 	make pub_get
 	dart run build_runner watch
 
-.PHONY: clean
+.PHONY: clean&run
+clean&run: clean run
 clean:
-	flutter clean
-	make pub_get
-	make clean_pod
+	cd ios
+	rm -rf Pods Podfile.lock
+	pod install --repo-update
+	cd ..
+	make run
 
 .PHONY: clean_pod
 clean_pod:
 	rm -Rf ios/Podfile.lock
 	rm -Rf ios/Pods
-	rm -Rf ios/.symlinks
+	rm -Rf ios/.symlinkscd 
 	rm -Rf ios/Flutter/Flutter.podspec
 	pod install --repo-update
 
@@ -45,3 +48,9 @@ format:
 .PHONY: build
 build:
 	flutter pub run build_runner build --delete-conflicting-outputs
+	
+.PHONY: run
+run:
+	flutter clean
+	flutter pub get
+	flutter run
