@@ -1,6 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// Project imports:
 import 'root/presentation/root_screen.dart';
 import 'theme/Tunagu_themes.dart';
 
@@ -19,9 +23,6 @@ class App extends ConsumerWidget {
       ),
       title: 'Tunagu',
       theme: theme,
-      supportedLocales: const [
-        Locale('ja', 'JP'),
-      ],
       locale: const Locale('ja', 'JP'),
       home: const RootScreen(),
     );
