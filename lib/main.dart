@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
@@ -22,8 +23,8 @@ Future<void> main() async {
   );
   final sharedPreferences = await SharedPreferences.getInstance();
   await sharedPreferences.clear();
-  
-  runApp(const MyApp());
+
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -39,4 +40,3 @@ class MyApp extends StatelessWidget {
         home: const App(),
       );
 }
-
