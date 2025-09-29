@@ -1,6 +1,5 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,8 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../component/app_button.dart';
 import '../../../component/auth_text_field.dart';
 
-class SignInForm extends ConsumerWidget {
-  const SignInForm({super.key});
+class SigninFormScreen extends ConsumerWidget {
+  const SigninFormScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Column(

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import '../component/auth_switch_button.dart';
-import '../component/signin_form.dart';
-import '../component/signup_form.dart';
 import '../component/slide_fade_switcher.dart';
+import 'signin_form_screen.dart';
+import 'signup_form_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -30,8 +30,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
                     child: SlideFadeSwitcher(
                         child: _showSignIn
-                            ? const SignInForm()
-                            : const SignUpForm()),
+                            ? const SigninFormScreen()
+                            : const SignUpFormScreen()),
                   ),
                 ],
               ),

@@ -10,8 +10,8 @@ import '../../../component/auth_text_field.dart';
 
 // Package imports:
 
-class SignUpForm extends ConsumerWidget {
-  const SignUpForm({super.key});
+class SignUpFormScreen extends ConsumerWidget {
+  const SignUpFormScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Column(
