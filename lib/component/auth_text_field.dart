@@ -21,7 +21,7 @@ class AuthTextField extends HookConsumerWidget {
     this.enableObscureToggle = false,
     this.showValidationSuccessIcon = false,
     this.showValidationHint = false,
-    this.onChanged, 
+    this.onChanged,
     this.initialText,
   });
 
@@ -47,7 +47,9 @@ class AuthTextField extends HookConsumerWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: errorText == null ? TunaguColors.gray300 : TunaguColors.red400,
+              color: errorText == null
+                  ? TunaguColors.gray300
+                  : TunaguColors.red400,
               width: 1,
             ),
           ),
@@ -60,7 +62,8 @@ class AuthTextField extends HookConsumerWidget {
               color: TunaguColors.gray900,
             ),
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               labelText: labelText,
               labelStyle: TunaguTextTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w400,
@@ -79,7 +82,8 @@ class AuthTextField extends HookConsumerWidget {
                 children: [
                   enableObscureToggle
                       ? TextButton(
-                          onPressed: () => obscureText.value = !obscureText.value,
+                          onPressed: () =>
+                              obscureText.value = !obscureText.value,
                           child: Text(
                             obscureText.value ? '表示' : '非表示',
                             style: TunaguTextTheme.labelMedium?.copyWith(
@@ -92,7 +96,8 @@ class AuthTextField extends HookConsumerWidget {
                   showValidationSuccessIcon
                       ? const Padding(
                           padding: EdgeInsets.only(right: 16),
-                          child: Icon(Symbols.check_circle, color: TunaguColors.green400),
+                          child: Icon(Symbols.check_circle,
+                              color: TunaguColors.green400),
                         )
                       : const SizedBox.shrink(),
                 ],

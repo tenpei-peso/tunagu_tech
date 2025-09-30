@@ -1,12 +1,19 @@
 // Flutter
+
+// Flutter imports:
 import 'package:flutter/material.dart';
-// Riverpod
+
+// Package imports:
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// Project imports
+// Project imports:
 import '../../../component/app_button.dart';
 import '../../../component/auth_text_field.dart';
 import '../provider/sign_in_form_state_provider.dart';
+
+// Riverpod
+
+// Project imports
 
 class SigninFormScreen extends ConsumerWidget {
   const SigninFormScreen({super.key});
@@ -32,13 +39,13 @@ class _Title extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-      'おかえりなさい👋',
-      textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-    );
+        'おかえりなさい👋',
+        textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+      );
 }
 
 class _EmailField extends ConsumerWidget {
@@ -123,8 +130,7 @@ class _SignInButton extends ConsumerWidget {
           .textTheme
           .bodyMedium
           ?.copyWith(fontWeight: FontWeight.bold),
-      onPressed:
-          (form.isValid && !form.isSubmitting) ? notifier.submit : null,
+      onPressed: (form.isValid && !form.isSubmitting) ? notifier.submit : null,
     );
   }
 }

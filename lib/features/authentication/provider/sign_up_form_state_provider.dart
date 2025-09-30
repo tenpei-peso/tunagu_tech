@@ -1,4 +1,7 @@
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
 import '../../../domain/repositories/auth_repository.dart';
 import 'sign_up_form_state.dart';
 

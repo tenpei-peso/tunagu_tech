@@ -1,8 +1,11 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../../../domain/repositories/auth_repository.dart';
 import 'auth_state.dart';
 
@@ -20,9 +23,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
     // 以降は FirebaseAuth の状態変化を購読して自動反映
     _sub = _auth.authStateChanges().listen(
-      _emitFrom,
-      onError: (e, __) => state = AuthState.failure(message: e.toString()),
-    );
+          _emitFrom,
+          onError: (e, __) => state = AuthState.failure(message: e.toString()),
+        );
   }
 
   final FirebaseAuth _auth;

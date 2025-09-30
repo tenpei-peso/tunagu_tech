@@ -1,9 +1,13 @@
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
 import '../../../domain/repositories/auth_repository.dart';
 import 'sign_in_form_state.dart';
 
 final signInFormProvider =
-    StateNotifierProvider.autoDispose<SignInFormNotifier, SignInFormState>((ref) {
+    StateNotifierProvider.autoDispose<SignInFormNotifier, SignInFormState>(
+        (ref) {
   final repo = ref.read(authRepositoryProvider);
   return SignInFormNotifier(repo);
 });
@@ -35,7 +39,7 @@ class SignInFormNotifier extends StateNotifier<SignInFormState> {
     if (state.isSubmitting) return;
 
     final emailErr = _validateEmail(state.email);
-    final passErr  = _validatePassword(state.password);
+    final passErr = _validatePassword(state.password);
 
     if (emailErr != null || passErr != null) {
       state = state.copyWith(

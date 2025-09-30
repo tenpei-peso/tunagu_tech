@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
 import '../../features/authentication/presentation/welcme_screen.dart';
 import '../../features/authentication/provider/auth_state.dart';
 import '../../features/authentication/provider/auth_state_provider.dart';
