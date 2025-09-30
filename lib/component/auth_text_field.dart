@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project imports:
+import '../features/authentication/component/size_fade_switcher.dart';
 import '../theme/Tunagu_colors.dart';
 import '../theme/Tunagu_text_theme.dart';
 
@@ -20,7 +21,10 @@ class AuthTextField extends HookConsumerWidget {
     this.enableObscureToggle = false,
     this.showValidationSuccessIcon = false,
     this.showValidationHint = false,
+    this.onChanged,
+    this.initialText,
   });
+
   final String labelText;
   final String? hintText;
   final String? errorText;
@@ -28,6 +32,8 @@ class AuthTextField extends HookConsumerWidget {
   final bool enableObscureToggle;
   final bool showValidationSuccessIcon;
   final bool showValidationHint;
+  final ValueChanged<String>? onChanged;
+  final String? initialText;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -48,6 +54,7 @@ class AuthTextField extends HookConsumerWidget {
             ),
           ),
           child: TextField(
+            onChanged: onChanged,
             obscureText: obscureText.value,
             style: const TextStyle(
               fontSize: 16,
@@ -75,9 +82,8 @@ class AuthTextField extends HookConsumerWidget {
                 children: [
                   enableObscureToggle
                       ? TextButton(
-                          onPressed: () {
-                            obscureText.value = !obscureText.value;
-                          },
+                          onPressed: () =>
+                              obscureText.value = !obscureText.value,
                           child: Text(
                             obscureText.value ? '表示' : '非表示',
                             style: TunaguTextTheme.labelMedium?.copyWith(
@@ -90,16 +96,26 @@ class AuthTextField extends HookConsumerWidget {
                   showValidationSuccessIcon
                       ? const Padding(
                           padding: EdgeInsets.only(right: 16),
-                          child: Icon(
-                            Symbols.check_circle,
-                            color: TunaguColors.green400,
-                          ),
+                          child: Icon(Symbols.check_circle,
+                              color: TunaguColors.green400),
                         )
                       : const SizedBox.shrink(),
                 ],
               ),
             ),
           ),
+        ),
+        SizeFadeSwitcher(
+          child: errorText == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                  child: Text(
+                    errorText!,
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.error),
+                  ),
+                ),
         ),
       ],
     );
