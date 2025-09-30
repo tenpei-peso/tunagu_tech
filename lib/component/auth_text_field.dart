@@ -20,7 +20,10 @@ class AuthTextField extends HookConsumerWidget {
     this.enableObscureToggle = false,
     this.showValidationSuccessIcon = false,
     this.showValidationHint = false,
+    this.onChanged, 
+    this.initialText,
   });
+
   final String labelText;
   final String? hintText;
   final String? errorText;
@@ -28,6 +31,10 @@ class AuthTextField extends HookConsumerWidget {
   final bool enableObscureToggle;
   final bool showValidationSuccessIcon;
   final bool showValidationHint;
+
+  // 追加
+  final ValueChanged<String>? onChanged;
+  final String? initialText;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,13 +48,12 @@ class AuthTextField extends HookConsumerWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
-              color: errorText == null
-                  ? TunaguColors.gray300
-                  : TunaguColors.red400,
+              color: errorText == null ? TunaguColors.gray300 : TunaguColors.red400,
               width: 1,
             ),
           ),
           child: TextField(
+            onChanged: onChanged,
             obscureText: obscureText.value,
             style: const TextStyle(
               fontSize: 16,
@@ -55,8 +61,7 @@ class AuthTextField extends HookConsumerWidget {
               color: TunaguColors.gray900,
             ),
             decoration: InputDecoration(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               labelText: labelText,
               labelStyle: TunaguTextTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w400,
@@ -75,9 +80,7 @@ class AuthTextField extends HookConsumerWidget {
                 children: [
                   enableObscureToggle
                       ? TextButton(
-                          onPressed: () {
-                            obscureText.value = !obscureText.value;
-                          },
+                          onPressed: () => obscureText.value = !obscureText.value,
                           child: Text(
                             obscureText.value ? '表示' : '非表示',
                             style: TunaguTextTheme.labelMedium?.copyWith(
@@ -90,10 +93,7 @@ class AuthTextField extends HookConsumerWidget {
                   showValidationSuccessIcon
                       ? const Padding(
                           padding: EdgeInsets.only(right: 16),
-                          child: Icon(
-                            Symbols.check_circle,
-                            color: TunaguColors.green400,
-                          ),
+                          child: Icon(Symbols.check_circle, color: TunaguColors.green400),
                         )
                       : const SizedBox.shrink(),
                 ],
