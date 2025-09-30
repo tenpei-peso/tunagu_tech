@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project imports:
+import '../features/authentication/component/size_fade_switcher.dart';
 import '../theme/Tunagu_colors.dart';
 import '../theme/Tunagu_text_theme.dart';
 
@@ -31,8 +32,6 @@ class AuthTextField extends HookConsumerWidget {
   final bool enableObscureToggle;
   final bool showValidationSuccessIcon;
   final bool showValidationHint;
-
-  // 追加
   final ValueChanged<String>? onChanged;
   final String? initialText;
 
@@ -100,6 +99,18 @@ class AuthTextField extends HookConsumerWidget {
               ),
             ),
           ),
+        ),
+        SizeFadeSwitcher(
+          child: errorText == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 0),
+                  child: Text(
+                    errorText!,
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.error),
+                  ),
+                ),
         ),
       ],
     );
