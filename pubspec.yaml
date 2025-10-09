@@ -53,6 +53,8 @@ dependencies:
   # HTTP
   http: ^1.5.0
   material_symbols_icons: ^4.2873.0
+  # Mock
+  mocktail: ^1.0.4
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +65,8 @@ dev_dependencies:
   # Code generation
   build_runner: ^2.7.1
   json_serializable: ^6.11.1
+  firebase_core_platform_interface: any
+  mocktail: ^1.0.4
 
 
 flutter:
