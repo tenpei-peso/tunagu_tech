@@ -1,14 +1,16 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Package imports:
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../../features/authentication/presentation/welcme_screen.dart';
 import '../../features/authentication/provider/auth_state.dart';
 import '../../features/authentication/provider/auth_state_provider.dart';
 import 'tab_screen.dart';
+
+// Package imports:
 
 class RootScreen extends ConsumerWidget {
   const RootScreen({super.key});

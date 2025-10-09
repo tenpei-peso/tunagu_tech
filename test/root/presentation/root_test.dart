@@ -1,19 +1,21 @@
+// Flutter imports:
+import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_core_platform_interface/test.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mocktail/mocktail.dart';
+
+// Project imports:
 import 'package:tunagu/features/authentication/presentation/welcme_screen.dart';
 import 'package:tunagu/features/authentication/provider/auth_state.dart';
-
 import 'package:tunagu/features/authentication/provider/auth_state_provider.dart';
 import 'package:tunagu/root/presentation/root_screen.dart';
 import 'package:tunagu/root/presentation/tab_screen.dart';
-
 import '../../features/authentication/provider/auth_state_provider_test.dart';
-
 
 void main() {
   setUpAll(() async {
@@ -58,29 +60,30 @@ void main() {
   });
 
   testWidgets('認証済みなら Tab を表示', (tester) async {
-  final mockAuth = MockFirebaseAuth();
-  final mockRepo = MockAuthRepository();
-  final mockUser = MockUser();
+    final mockAuth = MockFirebaseAuth();
+    final mockRepo = MockAuthRepository();
+    final mockUser = MockUser();
 
-  when(() => mockAuth.authStateChanges()).thenAnswer((_) => const Stream<User?>.empty());
-  when(() => mockAuth.currentUser).thenReturn(mockUser);
+    when(() => mockAuth.authStateChanges())
+        .thenAnswer((_) => const Stream<User?>.empty());
+    when(() => mockAuth.currentUser).thenReturn(mockUser);
 
-  await tester.pumpWidget(
-    ProviderScope(
-      overrides: [
-        authNotifierProvider.overrideWith((ref) {
-          final notifier = AuthNotifier(mockAuth, mockRepo)
-            ..state = AuthState.authenticated(user: mockUser);
-          return notifier;
-        }),
-      ],
-      child: const MaterialApp(home: RootScreen()),
-    ),
-  );
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          authNotifierProvider.overrideWith((ref) {
+            final notifier = AuthNotifier(mockAuth, mockRepo)
+              ..state = AuthState.authenticated(user: mockUser);
+            return notifier;
+          }),
+        ],
+        child: const MaterialApp(home: RootScreen()),
+      ),
+    );
 
-  await tester.pump();
+    await tester.pump();
 
-  expect(find.byType(TabScreen), findsOneWidget);
-  expect(find.byType(WelcomeScreen), findsNothing);
-});
+    expect(find.byType(TabScreen), findsOneWidget);
+    expect(find.byType(WelcomeScreen), findsNothing);
+  });
 }

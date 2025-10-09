@@ -1,6 +1,9 @@
+// Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+// Project imports:
 import 'package:tunagu/domain/repositories/auth_repository.dart';
 import 'package:tunagu/features/authentication/provider/sign_in_form_state_provider.dart';
 import 'package:tunagu/utility/result.dart';
@@ -45,7 +48,8 @@ void main() {
         ..setEmail('a@b.com')
         ..setPassword('123456');
 
-      when(() => repo.signInWithEmail(email: any(named: 'email'), password: any(named: 'password')))
+      when(() => repo.signInWithEmail(
+              email: any(named: 'email'), password: any(named: 'password')))
           .thenAnswer((_) async => Result.success(FakeUserCredential()));
 
       // isSubmitting -> true
@@ -67,14 +71,17 @@ void main() {
         ..setEmail('a@b.com')
         ..setPassword('123456');
 
-      when(() => repo.signInWithEmail(email: any(named: 'email'), password: any(named: 'password')))
-          .thenAnswer((_) async => Result.error('FirebaseAuthException: wrong-password'));
+      when(() =>
+          repo.signInWithEmail(
+              email: any(named: 'email'),
+              password: any(named: 'password'))).thenAnswer(
+          (_) async => Result.error('FirebaseAuthException: wrong-password'));
 
       await notifier.submit();
 
       expect(notifier.state.isSubmitting, isFalse);
-      expect(notifier.state.passwordError, contains('パスワード')); // _mapAuthErrorの期待文言に合わせて
+      expect(notifier.state.passwordError,
+          contains('パスワード')); // _mapAuthErrorの期待文言に合わせて
     });
   });
 }
-

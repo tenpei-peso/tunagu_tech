@@ -1,14 +1,20 @@
+// Dart imports:
 import 'dart:async';
 
+// Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+// Project imports:
 import 'package:tunagu/domain/repositories/auth_repository.dart';
 import 'package:tunagu/features/authentication/provider/auth_state.dart';
 import 'package:tunagu/features/authentication/provider/auth_state_provider.dart';
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
+
 class MockUser extends Mock implements User {}
+
 class MockAuthRepository extends Mock implements AuthRepository {}
 
 void main() {
@@ -32,8 +38,8 @@ void main() {
     final notifier = AuthNotifier(auth, repo);
 
     // 初期loadingだが_emitFromを同期で呼ぶのでAuthNotifier を作った瞬間にはもう unauthenticated
-    expect(notifier.state, const AuthState.unauthenticated()); 
-    
+    expect(notifier.state, const AuthState.unauthenticated());
+
     // ログインイベントを流す
     final user = MockUser();
     when(() => auth.currentUser).thenReturn(user);

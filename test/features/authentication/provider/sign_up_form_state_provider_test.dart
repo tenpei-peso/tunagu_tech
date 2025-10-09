@@ -1,11 +1,12 @@
+// Package imports:
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+
+// Project imports:
 import 'package:tunagu/domain/repositories/auth_repository.dart';
 import 'package:tunagu/features/authentication/provider/sign_up_form_state_provider.dart';
 import 'package:tunagu/utility/result.dart';
-
-
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 
@@ -21,12 +22,11 @@ Future<void> main() async {
   });
 
   group('signUp:バリデーション', () {
-
     test('名前が空ならエラーを表示', () {
       notifier.setName('');
       expect(notifier.state.nameError, isNotNull);
     });
-    
+
     test('無効なメールアドレスはエラーを表示', () {
       notifier.setEmail('invalid');
       expect(notifier.state.emailError, isNotNull);
@@ -81,7 +81,8 @@ Future<void> main() async {
             email: any(named: 'email'),
             password: any(named: 'password'),
           )).thenAnswer(
-        (_) async => Result.error('FirebaseAuthException: email-already-in-use'),
+        (_) async =>
+            Result.error('FirebaseAuthException: email-already-in-use'),
       );
 
       await notifier.submit();
