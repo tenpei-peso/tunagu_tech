@@ -6,13 +6,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
+import '../../../domain/global_provider/firebase_client_provider.dart';
 import '../../../domain/repositories/auth_repository.dart';
 import 'auth_state.dart';
 
 final authNotifierProvider =
     StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   final repo = ref.watch(authRepositoryProvider);
-  final auth = FirebaseAuth.instance;
+  final auth = ref.watch(firebaseAuthProvider);
   return AuthNotifier(auth, repo);
 });
 
