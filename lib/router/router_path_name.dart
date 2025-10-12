@@ -7,6 +7,5 @@ class RoutePathName {
   static const String search = '/search';
   static const String message = '/message';
   static const String settings = '/settings';
-  static const String profile = '/profile';
   static const String welcome = '/welcome';
 }

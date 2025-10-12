@@ -1,13 +1,16 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// Project imports:
 import '../features/authentication/presentation/welcme_screen.dart';
 import '../features/authentication/provider/auth_state.dart';
 import '../features/authentication/provider/auth_state_provider.dart';
 import '../features/home/presentation/home_screen.dart';
 import '../features/message/presentation/message_screen.dart';
-import '../features/profile/presentation/profile_screen.dart';
 import '../features/search/presentation/search_screen.dart';
 import '../features/setting/presentation/setting_screen.dart';
 import '../root/presentation/root_screen.dart';
@@ -47,9 +50,9 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         path: RoutePathName.welcome,
         builder: (context, state) => const WelcomeScreen(),
       ),
-
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navShell) => RootScreen(navigationShell: navShell),
+        builder: (context, state, navShell) =>
+            RootScreen(navigationShell: navShell),
         branches: [
           // /app/home
           StatefulShellBranch(
@@ -75,15 +78,6 @@ final goRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: RoutePathName.message,
                 builder: (context, state) => const MessageScreen(),
-              ),
-            ],
-          ),
-          // /app/profile
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: RoutePathName.profile,
-                builder: (context, state) => const ProfileScreen(),
               ),
             ],
           ),
