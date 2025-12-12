@@ -13,7 +13,7 @@ import '../features/home/presentation/home_screen.dart';
 import '../features/message/presentation/message_screen.dart';
 import '../features/search/presentation/search_screen.dart';
 import '../features/setting/presentation/setting_screen.dart';
-import '../root/presentation/root_screen.dart';
+import '../root/root_screen.dart';
 import 'router_path_name.dart';
 import 'router_refresh_notifier.dart';
 

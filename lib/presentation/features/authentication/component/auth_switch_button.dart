@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import '../../../component/app_button.dart';
-import '../../../theme/Tunagu_colors.dart';
+import '../../../../common_component/app_button.dart';
+import '../../../../theme/Tunagu_colors.dart';
 import 'slide_fade_switcher.dart';
 
 class AuthSwitchButton extends StatelessWidget {

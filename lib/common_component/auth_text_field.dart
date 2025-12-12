@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 // Project imports:
-import '../features/authentication/component/size_fade_switcher.dart';
+import '../presentation/features/authentication/component/size_fade_switcher.dart';
 import '../theme/Tunagu_colors.dart';
 import '../theme/Tunagu_text_theme.dart';
 

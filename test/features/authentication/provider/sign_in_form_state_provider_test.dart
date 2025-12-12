@@ -2,10 +2,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:tunagu/domain/auth/repositories/auth_repository.dart';
 
 // Project imports:
-import 'package:tunagu/domain/repositories/auth_repository.dart';
-import 'package:tunagu/features/authentication/provider/sign_in_form_state_provider.dart';
+import 'package:tunagu/presentation/features/authentication/provider/sign_in_form_state_provider.dart';
 import 'package:tunagu/utility/result.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}

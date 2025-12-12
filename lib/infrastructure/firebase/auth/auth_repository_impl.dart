@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../utility/result.dart';
-import '../global_provider/firebase_client_provider.dart';
+import '../../../common_provider/firebase_client_provider.dart';
+import '../../../domain/auth/repositories/auth_repository.dart';
+import '../../../utility/result.dart';
 
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   //clientをDIする
@@ -12,23 +13,6 @@ final authRepositoryProvider = Provider<AuthRepository>((ref) {
   //ここを書き換えると、別の実装に差し替えられる
   return FirebaseAuthRepositoryImpl(client);
 });
-
-abstract class AuthRepository {
-  /// ユーザー作成（SignUp）
-  Future<Result<UserCredential>> signUpWithEmail({
-    required String email,
-    required String password,
-  });
-
-  /// ユーザーログイン（SignIn）
-  Future<Result<UserCredential>> signInWithEmail({
-    required String email,
-    required String password,
-  });
-
-  /// サインアウト
-  Future<Result<void>> signOut();
-}
 
 class FirebaseAuthRepositoryImpl implements AuthRepository {
   FirebaseAuthRepositoryImpl(this._client);

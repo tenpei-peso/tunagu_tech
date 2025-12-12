@@ -6,8 +6,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../../domain/global_provider/firebase_client_provider.dart';
-import '../../../domain/repositories/auth_repository.dart';
+import '../../../../common_provider/firebase_client_provider.dart';
+import '../../../../domain/auth/repositories/auth_repository.dart';
+import '../../../../infrastructure/firebase/auth/auth_repository_impl.dart';
 import 'auth_state.dart';
 
 final authNotifierProvider =

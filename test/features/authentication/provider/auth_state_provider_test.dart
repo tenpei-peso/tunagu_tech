@@ -5,11 +5,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:tunagu/domain/auth/repositories/auth_repository.dart';
 
 // Project imports:
-import 'package:tunagu/domain/repositories/auth_repository.dart';
-import 'package:tunagu/features/authentication/provider/auth_state.dart';
-import 'package:tunagu/features/authentication/provider/auth_state_provider.dart';
+import 'package:tunagu/presentation/features/authentication/provider/auth_state.dart';
+import 'package:tunagu/presentation/features/authentication/provider/auth_state_provider.dart';
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {}
 

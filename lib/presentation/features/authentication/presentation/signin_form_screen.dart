@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
-import '../../../component/app_button.dart';
-import '../../../component/auth_text_field.dart';
+import '../../../../common_component/app_button.dart';
+import '../../../../common_component/auth_text_field.dart';
 import '../provider/sign_in_form_state_provider.dart';
 
 // Riverpod

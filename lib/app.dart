@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import 'router/router.dart';
+import 'presentation/router/router.dart';
 import 'theme/Tunagu_themes.dart';
 
 class App extends ConsumerWidget {

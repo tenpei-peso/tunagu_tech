@@ -1,8 +1,10 @@
 // Package imports:
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../../../domain/repositories/auth_repository.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../../../domain/auth/repositories/auth_repository.dart';
+import '../../../../infrastructure/firebase/auth/auth_repository_impl.dart';
 import 'sign_in_form_state.dart';
 
 final signInFormProvider =

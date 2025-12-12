@@ -13,7 +13,6 @@ import 'package:uuid/uuid.dart';
 
 // Project imports:
 import 'app.dart';
-import 'domain/global_models/firestore_user/firestore_user_state.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
