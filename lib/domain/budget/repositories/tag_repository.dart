@@ -9,4 +9,6 @@ abstract class TagRepository {
   Future<Result<void>> delete(String id);
 
   Stream<Result<List<Tag>>> watchAll(String bookId);
+
+  Stream<Result<List<Tag>>> watchTags({required String bookId});
 }

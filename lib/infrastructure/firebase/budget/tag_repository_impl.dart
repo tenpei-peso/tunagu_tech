@@ -28,8 +28,7 @@ class FirestoreTagRepository implements TagRepository {
   @override
   Future<Result<Tag>> create(Tag tag) async {
     try {
-      final docRef =
-          tag.id.isEmpty ? _tags.doc() : _tags.doc(tag.id);
+      final docRef = tag.id.isEmpty ? _tags.doc() : _tags.doc(tag.id);
       final created = tag.copyWith(
         id: docRef.id,
         createdAt: tag.createdAt,
@@ -69,20 +68,46 @@ class FirestoreTagRepository implements TagRepository {
         .orderBy('name')
         .snapshots()
         .transform(
-      StreamTransformer<QuerySnapshot<Map<String, dynamic>>, Result<List<Tag>>>.
-          fromHandlers(
-        handleData: (snapshot, sink) {
-          try {
-            final tags = snapshot.docs.map(tagFromDoc).toList(growable: false);
-            sink.add(Result.success(tags));
-          } catch (e) {
-            sink.add(Result.error('Failed to parse tags: $e'));
-          }
-        },
-        handleError: (error, stackTrace, sink) {
-          sink.add(Result.error('Failed to watch tags: $error'));
-        },
-      ),
-    );
+          StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
+              Result<List<Tag>>>.fromHandlers(
+            handleData: (snapshot, sink) {
+              try {
+                final tags =
+                    snapshot.docs.map(tagFromDoc).toList(growable: false);
+                sink.add(Result.success(tags));
+              } catch (e) {
+                sink.add(Result.error('Failed to parse tags: $e'));
+              }
+            },
+            handleError: (error, stackTrace, sink) {
+              sink.add(Result.error('Failed to watch tags: $error'));
+            },
+          ),
+        );
+  }
+
+  @override
+  Stream<Result<List<Tag>>> watchTags({required String bookId}) {
+    return _tags
+        .where('bookId', isEqualTo: bookId)
+        .orderBy('name')
+        .snapshots()
+        .transform(
+          StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
+              Result<List<Tag>>>.fromHandlers(
+            handleData: (snapshot, sink) {
+              try {
+                final tags =
+                    snapshot.docs.map(tagFromDoc).toList(growable: false);
+                sink.add(Result.success(tags));
+              } catch (e) {
+                sink.add(Result.error('Failed to parse tags: $e'));
+              }
+            },
+            handleError: (error, stackTrace, sink) {
+              sink.add(Result.error('Failed to watch tags: $error'));
+            },
+          ),
+        );
   }
 }

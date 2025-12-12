@@ -90,22 +90,22 @@ class FirestoreCategoryRepository implements CategoryRepository {
         .orderBy('name')
         .snapshots()
         .transform(
-      StreamTransformer<QuerySnapshot<Map<String, dynamic>>, Result<List<Category>>>.
-          fromHandlers(
-        handleData: (snapshot, sink) {
-          try {
-            final categories =
-                snapshot.docs.map(categoryFromDoc).toList(growable: false);
-            sink.add(Result.success(categories));
-          } catch (e) {
-            sink.add(Result.error('Failed to parse categories: $e'));
-          }
-        },
-        handleError: (error, stackTrace, sink) {
-          sink.add(Result.error('Failed to watch categories: $error'));
-        },
-      ),
-    );
+          StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
+              Result<List<Category>>>.fromHandlers(
+            handleData: (snapshot, sink) {
+              try {
+                final categories =
+                    snapshot.docs.map(categoryFromDoc).toList(growable: false);
+                sink.add(Result.success(categories));
+              } catch (e) {
+                sink.add(Result.error('Failed to parse categories: $e'));
+              }
+            },
+            handleError: (error, stackTrace, sink) {
+              sink.add(Result.error('Failed to watch categories: $error'));
+            },
+          ),
+        );
   }
 
   List<Category> _defaultCategories(String bookId, DateTime now) {
@@ -211,5 +211,31 @@ class FirestoreCategoryRepository implements CategoryRepository {
         updatedAt: now,
       ),
     ];
+  }
+
+  //watchCategories
+  @override
+  Stream<Result<List<Category>>> watchCategories({required String bookId}) {
+    return _categories
+        .where('bookId', isEqualTo: bookId)
+        .orderBy('name')
+        .snapshots()
+        .transform(
+          StreamTransformer<QuerySnapshot<Map<String, dynamic>>,
+              Result<List<Category>>>.fromHandlers(
+            handleData: (snapshot, sink) {
+              try {
+                final categories =
+                    snapshot.docs.map(categoryFromDoc).toList(growable: false);
+                sink.add(Result.success(categories));
+              } catch (e) {
+                sink.add(Result.error('Failed to parse categories: $e'));
+              }
+            },
+            handleError: (error, stackTrace, sink) {
+              sink.add(Result.error('Failed to watch categories: $error'));
+            },
+          ),
+        );
   }
 }

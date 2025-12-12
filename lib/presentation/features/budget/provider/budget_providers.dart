@@ -16,6 +16,7 @@ import '../../../../infrastructure/firebase/budget/household_repository_impl.dar
 import '../../../../infrastructure/firebase/budget/summary_repository_impl.dart';
 import '../../../../infrastructure/firebase/budget/tag_repository_impl.dart';
 import '../../../../infrastructure/firebase/budget/todo_repository_impl.dart';
+import '../../authentication/provider/auth_state.dart';
 
 final selectedHouseholdIdProvider = StateProvider<String?>((ref) => null);
 
@@ -40,16 +41,16 @@ final householdListProvider =
       final repo = ref.watch(householdRepositoryProvider);
       return _unwrapResultStream(repo.watchHouseholds(user.uid));
     },
-    loading: () => const Stream<List<Household>>.value(<Household>[]),
-    failure: (_) => const Stream<List<Household>>.value(<Household>[]),
-    unauthenticated: (_) => const Stream<List<Household>>.value(<Household>[]),
+    loading: () => Stream<List<Household>>.value(<Household>[]),
+    failure: (_) => Stream<List<Household>>.value(<Household>[]),
+    unauthenticated: (_) => Stream<List<Household>>.value(<Household>[]),
   );
 });
 
 final categoriesProvider = StreamProvider.autoDispose<List<Category>>((ref) {
   final bookId = ref.watch(selectedHouseholdIdProvider);
   if (bookId == null) {
-    return const Stream<List<Category>>.value(<Category>[]);
+    return Stream<List<Category>>.value(<Category>[]);
   }
   final repo = ref.watch(categoryRepositoryProvider);
   return _unwrapResultStream(repo.watchCategories(bookId: bookId));
@@ -58,18 +59,17 @@ final categoriesProvider = StreamProvider.autoDispose<List<Category>>((ref) {
 final tagsProvider = StreamProvider.autoDispose<List<Tag>>((ref) {
   final bookId = ref.watch(selectedHouseholdIdProvider);
   if (bookId == null) {
-    return const Stream<List<Tag>>.value(<Tag>[]);
+    return Stream<List<Tag>>.value(<Tag>[]);
   }
   final repo = ref.watch(tagRepositoryProvider);
   return _unwrapResultStream(repo.watchTags(bookId: bookId));
 });
 
-final entriesByMonthProvider =
-    StreamProvider.autoDispose<List<Entry>>((ref) {
+final entriesByMonthProvider = StreamProvider.autoDispose<List<Entry>>((ref) {
   final bookId = ref.watch(selectedHouseholdIdProvider);
   final month = ref.watch(selectedMonthProvider);
   if (bookId == null) {
-    return const Stream<List<Entry>>.value(<Entry>[]);
+    return Stream<List<Entry>>.value(<Entry>[]);
   }
   final repo = ref.watch(entryRepositoryProvider);
   return _unwrapResultStream(
@@ -102,7 +102,7 @@ final monthlySummaryProvider =
 final todosProvider = StreamProvider.autoDispose<List<Todo>>((ref) {
   final bookId = ref.watch(selectedHouseholdIdProvider);
   if (bookId == null) {
-    return const Stream<List<Todo>>.value(<Todo>[]);
+    return Stream<List<Todo>>.value(<Todo>[]);
   }
   final repo = ref.watch(todoRepositoryProvider);
   return _unwrapResultStream(repo.watchAll(bookId));

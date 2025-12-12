@@ -40,6 +40,7 @@ class BudgetTodoScreen extends HookConsumerWidget {
             status: TodoStatus.incomplete,
             createdAt: now,
             updatedAt: now,
+            isDone: false,
           );
           await ref.read(todoRepositoryProvider).create(todo);
         },
@@ -63,11 +64,14 @@ class BudgetTodoScreen extends HookConsumerWidget {
                 return Card(
                   child: ListTile(
                     leading: Icon(
-                      checked ? Icons.check_circle : Icons.radio_button_unchecked,
+                      checked
+                          ? Icons.check_circle
+                          : Icons.radio_button_unchecked,
                       color: checked ? Colors.green : Colors.grey,
                     ),
                     title: Text(todo.title),
-                    subtitle: Text('期限: ${todo.dueDate.toLocal().toString().split(' ')[0]}'),
+                    subtitle: Text(
+                        '期限: ${todo.dueDate.toLocal().toString().split(' ')[0]}'),
                     trailing: IconButton(
                       icon: const Icon(Icons.delete),
                       onPressed: () async {

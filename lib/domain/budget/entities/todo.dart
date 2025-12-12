@@ -17,6 +17,7 @@ abstract class Todo with _$Todo {
     required String categoryId,
     required String title,
     required DateTime dueDate,
+    required bool isDone,
     @Default(TodoStatus.incomplete) TodoStatus status,
     required DateTime createdAt,
     required DateTime updatedAt,

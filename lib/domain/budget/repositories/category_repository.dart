@@ -13,4 +13,6 @@ abstract class CategoryRepository {
   Future<Result<void>> delete(String id);
 
   Stream<Result<List<Category>>> watchAll(String bookId);
+
+  Stream<Result<List<Category>>> watchCategories({required String bookId});
 }

@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../features/authentication/presentation/welcme_screen.dart';
+import '../features/authentication/provider/auth_state.dart';
 import '../features/authentication/provider/auth_state_provider.dart';
 import '../features/budget/calendar/presentation/budget_calendar_screen.dart';
 import '../features/budget/graph/presentation/budget_graph_screen.dart';
