@@ -50,16 +50,16 @@ class RootScreen extends StatelessWidget {
                     text: 'Home',
                   ),
                   GButton(
-                    icon: Icons.search,
-                    text: 'Search',
+                    icon: Icons.calendar_month,
+                    text: 'Calendar',
                   ),
                   GButton(
-                    icon: Icons.message,
-                    text: 'Messages',
+                    icon: Icons.check_circle,
+                    text: 'TODO',
                   ),
                   GButton(
-                    icon: Icons.settings,
-                    text: 'Settings',
+                    icon: Icons.pie_chart,
+                    text: 'Graph',
                   ),
                 ],
                 selectedIndex: navigationShell.currentIndex,

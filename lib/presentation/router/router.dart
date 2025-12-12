@@ -7,12 +7,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Project imports:
 import '../features/authentication/presentation/welcme_screen.dart';
-import '../features/authentication/provider/auth_state.dart';
 import '../features/authentication/provider/auth_state_provider.dart';
-import '../features/home/presentation/home_screen.dart';
-import '../features/message/presentation/message_screen.dart';
-import '../features/search/presentation/search_screen.dart';
-import '../features/setting/presentation/setting_screen.dart';
+import '../features/budget/calendar/presentation/budget_calendar_screen.dart';
+import '../features/budget/graph/presentation/budget_graph_screen.dart';
+import '../features/budget/home/presentation/budget_home_screen.dart';
+import '../features/budget/todo/presentation/budget_todo_screen.dart';
 import '../root/root_screen.dart';
 import 'router_path_name.dart';
 import 'router_refresh_notifier.dart';
@@ -54,39 +53,35 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state, navShell) =>
             RootScreen(navigationShell: navShell),
         branches: [
-          // /app/home
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: RoutePathName.home,
-                builder: (context, state) => const HomeScreen(),
+                builder: (context, state) => const BudgetHomeScreen(),
               ),
             ],
           ),
-          // /app/search
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: RoutePathName.search,
-                builder: (context, state) => const SearchScreen(),
+                path: RoutePathName.calendar,
+                builder: (context, state) => const BudgetCalendarScreen(),
               ),
             ],
           ),
-          // /app/message
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: RoutePathName.message,
-                builder: (context, state) => const MessageScreen(),
+                path: RoutePathName.todo,
+                builder: (context, state) => const BudgetTodoScreen(),
               ),
             ],
           ),
-          // /app/settings
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: RoutePathName.settings,
-                builder: (context, state) => const SettingsScreen(),
+                path: RoutePathName.graph,
+                builder: (context, state) => const BudgetGraphScreen(),
               ),
             ],
           ),

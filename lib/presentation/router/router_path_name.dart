@@ -4,8 +4,8 @@ class RoutePathName {
 
   // パス
   static const String home = '/';
-  static const String search = '/search';
-  static const String message = '/message';
-  static const String settings = '/settings';
+  static const String calendar = '/calendar';
+  static const String todo = '/todo';
+  static const String graph = '/graph';
   static const String welcome = '/welcome';
 }
