@@ -10,7 +10,7 @@ enum EntryType {
 }
 
 @freezed
-class Entry with _$Entry {
+abstract class Entry with _$Entry {
   const factory Entry({
     required String id,
     required String bookId,

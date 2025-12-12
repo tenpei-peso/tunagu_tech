@@ -6,7 +6,7 @@ part 'household.g.dart';
 
 /// Household/Book represents a shared budget space.
 @freezed
-class Household with _$Household {
+abstract class Household with _$Household {
   const factory Household({
     required String id,
     required String name,

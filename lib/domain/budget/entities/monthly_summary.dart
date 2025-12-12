@@ -6,7 +6,7 @@ part 'monthly_summary.g.dart';
 
 /// Aggregated values for a specific month, supporting charts and home totals.
 @freezed
-class MonthlySummary with _$MonthlySummary {
+abstract class MonthlySummary with _$MonthlySummary {
   const factory MonthlySummary({
     required String bookId,
     required DateTime month,

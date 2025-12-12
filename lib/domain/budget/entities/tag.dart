@@ -10,7 +10,7 @@ enum TagType {
 }
 
 @freezed
-class Tag with _$Tag {
+abstract class Tag with _$Tag {
   const factory Tag({
     required String id,
     required String bookId,
